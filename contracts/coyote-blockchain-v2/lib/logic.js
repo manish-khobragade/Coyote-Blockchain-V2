@@ -36,7 +36,7 @@ function shipmentDelivered(shipmentReceived) {
 
 
     // calculate penalty for temperature violation
-    if (shipment.temperatureReadings) {        
+    if (shipment.temperatureReadings) {
         var minimumTempViolationCount = shipment.temperatureReadings.filter(function (reading) { return reading.centigrade < contract.minTemperature; }).length;
         var maxTempViolationCount = shipment.temperatureReadings.filter(function (reading) { return reading.centigrade > contract.maxTemperature; }).length;
         console.log('Min Temp Count : ' + minimumTempViolationCount);
@@ -54,7 +54,7 @@ function shipmentDelivered(shipmentReceived) {
 
     // calculate penalty for late arrivals
     if (shipment.loadStops) {
-        var loadStopPickup = shipment.loadStops.filter(function (ls) { return ls.stopType === "PICKUP" })[0];        
+        var loadStopPickup = shipment.loadStops.filter(function (ls) { return ls.stopType === "PICKUP" })[0];
         var appointmentTimePickup = loadStopPickup.appointmentTime.toDateFromDatetime();
         var actualTimePickup = loadStopPickup.actualTime.toDateFromDatetime();
         if (appointmentTimePickup < actualTimePickup) {
@@ -201,8 +201,11 @@ function gpsReading(gpsReading) {
 function shipmentAccepted(shipmentAccepted) {
     var shipment = shipmentAccepted.shipment;
     var NS = 'org.coyote.playground.blockchain.demo';
-    
+
     shipment.status = 'ACCEPTED';
+    shipment.statusDuplicate = 'ACCEPTED';
+    shipment.totalAmount = 1000;
+    console.log('Shipment current' + shipment.status);
     var shipmentRegistry = getAssetRegistry(NS + '.Shipment')
         .then(function (shipmentRegistry) {
             // add the accepted state to the shipment

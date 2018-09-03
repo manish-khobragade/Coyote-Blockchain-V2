@@ -144,6 +144,7 @@ asset Shipment identified by shipmentId {
   o Long totalAmount
   o Long totalPenalty 
   o Penalty[] penalties
+  o String statusDuplicate
 }
 
 /**
