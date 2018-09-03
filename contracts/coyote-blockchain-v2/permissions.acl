@@ -202,5 +202,22 @@ rule Customer_GPS_ReadOnly {
   action: ALLOW
 }
 
+rule Carrier_Customer_ReadOnly {
+  description: "Carrier has read only access on Carrier"
+  participant: "org.coyote.playground.blockchain.demo.Carrier"
+  operation: READ
+  resource: "org.coyote.playground.blockchain.demo.Customer"
+  action: ALLOW
+}
+
+rule Carrier_Broker_ReadOnly {
+  description: "Carrier has read only access on Broker"
+  participant: "org.coyote.playground.blockchain.demo.Carrier"
+  operation: READ
+  resource: "org.coyote.playground.blockchain.demo.Broker"
+  action: ALLOW
+}
+
+
 
 
