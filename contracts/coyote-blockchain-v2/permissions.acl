@@ -144,6 +144,21 @@ rule Customer_Shipment {
   action: ALLOW
 }
 
+rule Carrier_Shipment_Accepted {
+  description: "Carrier has full access on ShipmentAccepted transaction"
+  participant: "org.coyote.playground.blockchain.demo.Carrier"
+  operation: ALL
+  resource: "org.coyote.playground.blockchain.demo.ShipmentAccepted"
+  action: ALLOW
+}
+
+rule Customer_Shipment_PickedUp {
+  description: "Customer has full access on ShipmentPickedUp transaction"
+  participant: "org.coyote.playground.blockchain.demo.Customer"
+  operation: ALL
+  resource: "org.coyote.playground.blockchain.demo.ShipmentPickedUp"
+  action: ALLOW
+}
 
 rule Customer_Shipment_Received {
   description: "Customer has full access on ShipmentReceived transaction"
@@ -161,14 +176,6 @@ rule Carrier_Shipment_Received_ReadOnly {
   action: ALLOW
 }
 
-rule Customer_Shipment_PickedUp {
-  description: "Customer has full access on ShipmentPickedUp transaction"
-  participant: "org.coyote.playground.blockchain.demo.Customer"
-  operation: ALL
-  resource: "org.coyote.playground.blockchain.demo.ShipmentPickedUp"
-  action: ALLOW
-}
-
 rule Carrier_Shipment_PickedUp_ReadOnly {
   description: "Carrier has full access on ShipmentPickedUp transaction"
   participant: "org.coyote.playground.blockchain.demo.Carrier"
@@ -177,13 +184,7 @@ rule Carrier_Shipment_PickedUp_ReadOnly {
   action: ALLOW
 }
 
-rule Carrier_Shipment_Accepted {
-  description: "Carrier has full access on ShipmentAccepted transaction"
-  participant: "org.coyote.playground.blockchain.demo.Carrier"
-  operation: ALL
-  resource: "org.coyote.playground.blockchain.demo.ShipmentAccepted"
-  action: ALLOW
-}
+
 
 rule Customer_Shipment_Accepted_ReadOnly {
   description: "Customer has read only access on ShipmentAccepted transaction"
