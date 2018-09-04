@@ -249,7 +249,7 @@ function shipmentPickedUp(shipmentPicked) {
 
             if (appointmentTimePickup < actualTimePickup) {
                 var shipmentLatePickedUp = factory.newEvent(NS, 'ShipmentLatePickup');
-                sipmentLatePickedUp.shipment = shipment;
+                shipmentLatePickedUp.shipment = shipment;
                 var timeDiffInMinutes = diffMinutes(actualTimePickup, appointmentTimePickup);
                 var message = 'Carrier checked in ' + timeDiffInMinutes + ' minutes past scheduled appointment time of ' + appointmentTimePickup;
                 shipmentLatePickedUp.message = message;

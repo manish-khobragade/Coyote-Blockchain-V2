@@ -77,7 +77,7 @@ rule Carrier_Contract {
 }
 
 rule Customer_Facility {
-  description: "Customer has read access on Facility"
+  description: "Customer has all access on Facility"
   participant: "org.coyote.playground.blockchain.demo.Customer"
   operation: ALL
   resource: "org.coyote.playground.blockchain.demo.Facility"
