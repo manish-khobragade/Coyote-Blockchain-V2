@@ -63,7 +63,7 @@ rule Carrier_Broker_ReadOnly {
 rule Carrier_Facility {
   description: "Carrier has full access on Facility"
   participant: "org.coyote.playground.blockchain.demo.Carrier"
-  operation: READ
+  operation: ALL
   resource: "org.coyote.playground.blockchain.demo.Facility"
   action: ALLOW
 }
@@ -79,7 +79,7 @@ rule Carrier_Contract {
 rule Customer_Facility {
   description: "Customer has read access on Facility"
   participant: "org.coyote.playground.blockchain.demo.Customer"
-  operation: READ
+  operation: ALL
   resource: "org.coyote.playground.blockchain.demo.Facility"
   action: ALLOW
 }
