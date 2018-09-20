@@ -52,6 +52,14 @@ rule Carrier_Customer_ReadOnly {
   action: ALLOW
 }
 
+rule Carrier_LoadStop_ReadOnly {
+  description: "Carrier has read only access on Carrier"
+  participant: "org.coyote.playground.blockchain.demo.Carrier"
+  operation: ALL
+  resource: "org.coyote.playground.blockchain.demo.LoadStop"
+  action: ALLOW
+}
+
 rule Carrier_Broker_ReadOnly {
   description: "Carrier has read only access on Broker"
   participant: "org.coyote.playground.blockchain.demo.Carrier"
@@ -217,3 +225,4 @@ rule Carrier_GPS_All {
   resource: "org.coyote.playground.blockchain.demo.GpsReading"
   action: ALLOW
 }
+
