@@ -12,6 +12,10 @@
  * limitations under the License.
  */
 
+'use strict';
+/**
+ * Write your transction processor functions here
+ */
 
 String.prototype.toDateFromDatetime = function () {
     var parts = this.split(/[- :]/);
@@ -218,7 +222,7 @@ function shipmentAccepted(shipmentAccepted) {
     var NS = 'org.coyote.playground.blockchain.demo';
     shipment.status = 'ACCEPTED';
     console.log('Shipment current ' + shipment);
-    var shipmentRegistry = getAssetRegistry(NS + '.Shipment')
+    return getAssetRegistry(NS + '.Shipment')
         .then(function (shipmentRegistry) {
             // add the accepted state to the shipment
             return shipmentRegistry.update(shipment);
@@ -244,8 +248,8 @@ function shipmentPickedUp(shipmentPicked) {
             var index = shipment.loadStops.indexOf(loadStopPickup);
             shipment.loadStops[index].actualTime = pickUpTime;
 
-            var appointmentTimePickup = shipment.loadStops[index].appointmentTime.toDateFromDatetime();
-            var actualTimePickup = shipment.loadStops[index].actualTime.toDateFromDatetime();
+            var appointmentTimePickup = loadStopPickup.appointmentTime.toDateFromDatetime();
+            var actualTimePickup = pickUpTime.toDateFromDatetime();
 
             if (appointmentTimePickup < actualTimePickup) {
                 var shipmentLatePickedUp = factory.newEvent(NS, 'ShipmentLatePickup');
@@ -256,7 +260,7 @@ function shipmentPickedUp(shipmentPicked) {
                 emit(shipmentLatePickedUp);
             }
 
-            var shipmentRegistry = getAssetRegistry(NS + '.Shipment')
+            return getAssetRegistry(NS + '.Shipment')
                 .then(function (shipmentRegistry) {
                     // add the accepted state to the shipment
                     return shipmentRegistry.update(shipment);
